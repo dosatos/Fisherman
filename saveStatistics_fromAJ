@@ -1,0 +1,27 @@
+for GameOver Class:
+func didLoadFromCCB() {
+        updateBestScore()
+        OALSimpleAudio.sharedInstance().playEffect("thud.mp3")
+        OALSimpleAudio.sharedInstance().effectsVolume = 0.5
+    }
+   
+    func updateBestScore() {
+        var newBestScore = NSUserDefaults.standardUserDefaults().integerForKey("bestScore")
+        bestScoreNumber.string = "\(newBestScore)"
+    }
+   
+    override func update(delta: CCTime) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var currentBestScore = defaults.integerForKey("bestScore")
+        var currentScore = defaults.integerForKey("yourScore")
+        bestScoreNumber.string = "\(currentBestScore)"
+    }
+ 
+for Gameplay class:
+ 
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var bestScore = defaults.integerForKey("bestScore")
+        if self.points > bestScore {
+            defaults.setInteger(Int(self.points), forKey: "bestScore")
+ 
+(put it where you trigger your gameover)
